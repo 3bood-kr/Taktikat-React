@@ -1,0 +1,30 @@
+@import url();
+.header{
+    height: 101px;
+    background-color: #502464;
+    color: white;
+}
+
+.nav-wrapper{
+    height: 100%;
+}
+
+a.nav-link{
+    border-bottom:  3px solid transparent;
+    color: white !important;
+}
+
+a.nav-link.active{
+    border-bottom-color:#C90F8D;
+    font-size: 16px;
+}
+
+.nav-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border: 2px solid #914ABD;
+    border-radius: 50%;
+}
