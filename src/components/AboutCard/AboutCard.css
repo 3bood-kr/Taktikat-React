@@ -1,0 +1,19 @@
+.about-card{
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.about-card .about-image{
+    width: 100%;
+    height: 367px;
+    object-fit: cover;
+}
+
+.about-card .about-text{
+    color: #515151;
+    text-align: justify; 
+    font-weight: 500;
+    line-height: 1.6;
+    font-weight: 500; 
+}

@@ -1,0 +1,13 @@
+.matches-accordion-item{
+
+}
+
+.matches-accordion .accordion-item{
+    border-radius: 12px;
+    border: none !important;
+}
+
+.matches-accordion .accordion-button{
+    background-color: #F9F9F9 !important;
+    border-radius: 12px;
+}
