@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MainLayout from '../../layouts/MainLayout'
 import AsideLayout from '../../layouts/AsideLayout'
 import SectionLayout from '../../layouts/SectionLayout'
@@ -8,8 +8,31 @@ import NewsCardBody from '../../components/NewsCardBody'
 import MainCard from '../../components/MainCard'
 import SecondMainCard from '../../components/SecondMainCard/SecondMainCard'
 import MatchesCardBody from '../../components/MatchesCardBody'
+import { useQueries, useQuery } from '@tanstack/react-query'
+import { fetchMainNews } from '../../fetchers/News'
+import { BarLoader, BounceLoader, CircleLoader, ClimbingBoxLoader } from 'react-spinners'
+import Loader from '../../components/Loader'
 
 export default function HomePage() {
+
+  const [
+    mainNewsQuery,
+
+  ] = useQueries({
+    queries: [
+      {
+        queryKey: ['main_news'],
+        queryFn: fetchMainNews,
+      }
+    ]
+  });
+
+  if(mainNewsQuery.isLoading){
+    return <Loader />
+  }
+  
+
+
   return (
     <>
       <MainLayout>
@@ -34,7 +57,7 @@ export default function HomePage() {
         <AsideLayout>
 
           <WhiteCard link='/news' heading='News'>
-            <NewsCardBody />
+            <NewsCardBody news={mainNewsQuery.data}/>
           </WhiteCard>
 
           <WhiteCard heading='Matches'>

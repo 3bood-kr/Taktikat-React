@@ -6,7 +6,7 @@ import { LiveTvIcon, CalendarIcon } from '../Icons/Icons'
 interface Props{
     heading: string
     link?: string
-    filter: false,
+    filter?: false,
     children: ReactNode
     className?: string
 }
@@ -15,11 +15,11 @@ export default function WhiteCard({ heading, link, children, filter, className }
   return (
     <>
     {/* mb-3 is temporary */}
-        <article className='row white-card p-3 mb-3'>
+        <article className='white-card p-3 mb-3'>
             <div className='p-1 d-flex align-item-center justify-content-between'>
                 <h2 className='white-card-title'>{ heading }</h2>
                 { link && <NavLink to={link}>See All</NavLink>}
-                { !link &&
+                { filter &&
                  <div className='d-flex gap-2'>
                     <div><LiveTvIcon /></div>
                     <div className='calendar-icon-container d-flex'>
@@ -32,8 +32,10 @@ export default function WhiteCard({ heading, link, children, filter, className }
                  </div>
                 }
             </div>
-            <div className='white-card-body row p-1'>
-                { children }
+            <div className='white-card-body p-1'>
+                <div className="row">
+                {children}
+                </div>
             </div>
 
         </article>

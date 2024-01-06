@@ -1,52 +1,42 @@
 import React from 'react'
 import image from '../../assets/images/home-news-img.png'
 import './NewsCardBody.css'
-interface Props{
-    news?: [],
+interface News {
+    news: newItem[]
 }
-export default function NewsCardBody({ news }: Props) {
+
+type newItem = {
+    id: number,
+    title: string,
+    image: string,
+    created_at: string,
+}
+
+export default function NewsCardBody({ news }: News) {
   return (
     <>
         <ul>
-            <li className='news-card-item mb-2 py-2'>
-                <div className='row'>
-                    <div className="news-item-image col-3">
-                        <img src={image} alt="" />
-                    </div>
-                    <div className="news-item-content col-9">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam aspernatur eius consequuntur unde. Voluptate, atque!
-                        </p>
-
-                    </div>
-                </div>
-            </li>
-            <li className='news-card-item mb-2 pb-2'>
-                <div className='row'>
-                    <div className="news-item-image col-3">
-                        <img src={image} alt="" />
-                    </div>
-                    <div className="news-item-content col-9">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam aspernatur eius consequuntur unde. Voluptate, atque!
-                        </p>
-
-                    </div>
-                </div>
-            </li>
-            <li className='news-card-item mb-2 pb-2'>
-                <div className='row'>
-                    <div className="news-item-image col-3">
-                        <img src={image} alt="" />
-                    </div>
-                    <div className="news-item-content col-9">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam aspernatur eius consequuntur unde. Voluptate, atque!
-                        </p>
-
-                    </div>
-                </div>
-            </li>
+        { news.map(
+                    (item, index) => (
+                        <li key={item.id} className='news-card-item mb-2 py-2'>
+                            <div className='row g-2'>
+                                <div className="news-item-image col-3 p-0">
+                                    <img src={item.image} alt="" />
+                                </div>
+                                <div className="news-item-content col-9 p-2">
+                                    <p>
+                                        {item.title}
+                                    </p>
+                                    <div className='news-item-info d-flex align-items-center justify-content-between mt-auto'>
+                                        <a href='/'>Sky News</a>
+                                        <span>{item.created_at}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    )
+                )
+            }
         </ul>
     </>
   )

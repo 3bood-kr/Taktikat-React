@@ -3,8 +3,32 @@
     border-bottom: 1px solid rgba(67, 67, 67, 0.11);
 }
 
+.news-item-image{
+    border-radius: 12px;
+    height: 84px;
+    overflow: hidden;
+}
 .news-item-image img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.news-item-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.news-item-info{
+    font-size: 12px;
+}
+
+.news-item-info a{
+    color: #C90F8D;
+    text-decoration: none;
+}
+
+.news-item-info span{
+    color: #787878;
 }

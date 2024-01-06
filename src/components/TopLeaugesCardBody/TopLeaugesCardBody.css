@@ -1,0 +1,14 @@
+aside .accordion-item{
+    border-radius: 12px;
+    border: none !important;
+}
+
+aside .accordion-button{
+    background-color: #F9F9F9 !important;
+    border-radius: 12px;
+}
+
+aside .accordion-list li:not(:last-of-type){
+    border-bottom: 1px solid rgba(67, 67, 67, 0.11);
+}
+
