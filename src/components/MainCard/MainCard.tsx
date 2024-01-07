@@ -1,23 +1,33 @@
 import React from 'react'
 import image from '../../assets/images/home-news-img.png'
 import './MainCard.css'
+import { Link } from 'react-router-dom'
 
 interface Props{
-    col: number
+   
 }
-export default function MainCard({ col }: Props) {
+
+interface Props{
+    link: string,
+    title?: string,
+    image?: string,
+    date?: string,
+    col?: number,
+
+}
+export default function MainCard({link, title, image, date, col }: Props) {
   return (
     <>
         <div className={`col-`+col}>
-            <a href='/' className='main-card'>
+            <Link to={link} className='main-card'>
                 <div className="main-card-image">
                     <img src={image} alt="" />
                 </div>
                 <div className="main-card-body p-2">
-                    <span className='date-text mb-3'>July 13, 2023</span>
-                    <p>Week’s Ultimate Transfer Roundup</p>
+                    <span className='date-text mb-3'>{ date }</span>
+                    <p>{ title?.substring(0, 40) }...</p>
                 </div>
-            </a>
+            </Link>
         </div>
     </>
   )

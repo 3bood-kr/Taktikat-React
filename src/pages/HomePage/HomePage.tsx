@@ -12,22 +12,33 @@ import { useQueries, useQuery } from '@tanstack/react-query'
 import { fetchMainNews } from '../../fetchers/News'
 import { BarLoader, BounceLoader, CircleLoader, ClimbingBoxLoader } from 'react-spinners'
 import Loader from '../../components/Loader'
+import { fetchAnalysis } from '../../fetchers/Analysis'
+import AnalysisCardBody from '../../components/AnalysisCardBody'
 
 export default function HomePage() {
 
   const [
     mainNewsQuery,
-
+    mainVideoAnalysisQuery,
+    mainArticleAnalysisQuery,
   ] = useQueries({
     queries: [
       {
         queryKey: ['main_news'],
         queryFn: fetchMainNews,
-      }
+      },
+      {
+        queryKey: ['main_video_analysis'],
+        queryFn: () => fetchAnalysis('video', 2),
+      },
+      {
+        queryKey: ['main_article_analysis'],
+        queryFn: () => fetchAnalysis('text', 2),
+      },
     ]
   });
 
-  if(mainNewsQuery.isLoading){
+  if(mainNewsQuery.isLoading || mainVideoAnalysisQuery.isLoading || mainArticleAnalysisQuery.isLoading){
     return <Loader />
   }
   
@@ -47,9 +58,10 @@ export default function HomePage() {
             <MainCard col={3}></MainCard>
           </WhiteCard>
 
-          <WhiteCard link='/analysis' heading='Analysis'>
-            <SecondMainCard col={6}></SecondMainCard>
-            <SecondMainCard col={6}></SecondMainCard>
+          <WhiteCard link='/analysis' heading='Analysis' showToggle={true}>
+            <AnalysisCardBody videos={mainVideoAnalysisQuery.data} articles={mainArticleAnalysisQuery.data}>
+              
+            </AnalysisCardBody>
           </WhiteCard>
 
         </SectionLayout>

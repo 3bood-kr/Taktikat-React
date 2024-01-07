@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import NewsPage from "./pages/NewsPage";
 import AnalysisPage from "./pages/AnalysisPage";
 import CarutiresPage from "./pages/CarutiresPage";
+import NewsShowPage from "./pages/NewsShowPage";
 
 const router= createBrowserRouter(
     [
@@ -19,6 +20,10 @@ const router= createBrowserRouter(
                 {
                     path: '/news',
                     element: <NewsPage />
+                },
+                {
+                    path: '/news/:slug',
+                    element: <NewsShowPage />
                 },
                 {
                     path: '/analysis',

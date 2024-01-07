@@ -6,6 +6,5 @@ export const fetchLeaguesByCountry = async () => {
             _limit: 5
            }
     });
-    console.log(data)
     return data.data; 
 }

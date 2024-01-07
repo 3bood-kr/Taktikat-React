@@ -19,7 +19,6 @@ type Leauge = {
 }
 
 export default function TopLeaugesCardBody({ countries }: Countries) {
-    console.log(countries)
     return (
         <>
             <Accordion defaultActiveKey="0">
@@ -27,17 +26,21 @@ export default function TopLeaugesCardBody({ countries }: Countries) {
                     Object.entries(countries).map(([key, {id, name, flag, leagues}]) => (
                         <Accordion.Item className='mb-3' eventKey={id+''}>
                             <Accordion.Header>
-                                <img src={flag} className='mx-2' style={{width: 27, height: 27}} alt="" />
-                                {name}
+                                <span className='circle-logo mx-2'>
+                                    <img src={flag}  alt="" />
+                                </span>
+                                <p>{name}</p>
                             </Accordion.Header>
                             <Accordion.Body className='p-0'>
                                 <ul className='p-1 accordion-list'>
                                     {
                                     leagues.map(
                                         (leauge, index) => (                              
-                                            <li key={leauge.id} className='px-1 py-3 mb-2'>
-                                                <img src={leauge.logo} className='mx-2' style={{width: 24, height: 24, borderRadius: '50%'}} alt="" />
-                                                {leauge.name}
+                                            <li key={leauge.id} className='d-flex align-items-center px-1 py-3'>
+                                                <span className='circle-logo mx-2'>
+                                                        <img src={leauge.logo} alt="" />
+                                                    </span>
+                                                <p>{leauge.name}</p>
                                             </li>
                                         ))
                                     }
