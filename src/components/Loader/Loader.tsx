@@ -2,13 +2,16 @@ import React from 'react'
 import { SyncLoader } from 'react-spinners'
 import './Loader.css'
 
-export default function Loader() {
+interface Props{
+  size?: number
+}
+export default function Loader({ size = 50 }: Props) {
   return (
     <>
         <main className='main-container loader-container'>
             <SyncLoader 
                 color='#502464'
-                size={50}
+                size={size}
                 aria-label="Loading Spinner"
                 data-testid="loader"
             />
