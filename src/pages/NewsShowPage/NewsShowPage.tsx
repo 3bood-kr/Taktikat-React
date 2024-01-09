@@ -24,7 +24,7 @@ export default function NewsShowPage() {
                 queryFn: fetchLeaguesByCountry,
             },
             {
-                queryKey: ['show_news'],
+                queryKey: ['show_news', params],
                 queryFn: () => fetchNewsBySlug(params.slug),
             }
         ]

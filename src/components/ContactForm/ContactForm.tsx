@@ -1,0 +1,96 @@
+import React, { useState } from 'react'
+import Select from 'react-select';
+import PhoneInput, { getCountries, getCountryCallingCode, isValidPhoneNumber } from 'react-phone-number-input/input'
+import { FaUserFriends } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import './ContactForm.css'
+import { useForm, useController, FieldValues } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod'
+
+const schema = z.object({
+    name: z.string().min(1),
+    email: z.string().email(),
+    phone: z.string().refine((data) => isValidPhoneNumber(data),
+    {
+        message: 'Invalid Phone Number'
+    }),
+    message: z.string().min(1).max(300)
+});
+
+type FormData = z.infer<typeof schema>;
+
+interface Props {
+    label: string,
+    type: string,
+
+}
+
+const options = getCountries().map((item) => (
+    { label: item, value: getCountryCallingCode(item) }
+));
+
+const handleSave = (formValues: FieldValues) => {
+    console.log(formValues)
+}
+
+export default function ContactForm() {
+    const { register, control, getValues, handleSubmit, formState: {errors} } = useForm<FormData>({ resolver: zodResolver(schema) });
+    const { field } = useController({ name: 'phone', control })
+
+
+    return (
+        <form onSubmit={handleSubmit(handleSave)}>
+            <div className="pb-3">
+                <label className='form-label pb-1'>Name</label>
+                <div className='form-input d-flex align-tems-center p-3'>
+                    <div className='px-2'>
+                        <FaUserFriends size={20} color='#C90F8D' />
+                    </div>
+                    <div className="px-3 w-100">
+                        <input {...register('name')} className='w-100' type="text" placeholder='Enter your name' />
+                    </div>
+                </div>
+                <p className='text-danger'>{ errors.name?.message ?? '' }</p>
+            </div>
+            <div className="pb-3">
+                <label className='form-label pb-1'>Email</label>
+                <div className='form-input d-flex align-tems-center p-3'>
+                    <div className='px-2'>
+                        <MdEmail size={20} color='#C90F8D' />
+                    </div>
+                    <div className="px-3 w-100">
+                        <input {...register('email')} className='w-100' type="email" placeholder='you@example.com' />
+                    </div>
+                </div>
+                <p className='text-danger'>{ errors.email?.message }</p>
+            </div>
+            <div className="pb-3">
+                <label className='form-label pb-1'>Phone Number</label>
+                <div className='form-input d-flex align-tems-center p-3'>
+                    {/* <div className='px-2'>
+                        <Select
+                            value={options.find(({value}) => value === field.value)}
+                            onChange={(option) => { field.onChange(option?.value) }}
+                            options={options}>
+                        </Select>
+                    </div> */}
+                    <div className="px-3 w-100">
+                        <PhoneInput onChange={(value) => {field.onChange(value)} } className='w-100'/>
+                    </div>
+                </div>
+                <p className='text-danger'>{ errors.phone?.message }</p>
+            </div>
+            <div className="pb-3">
+                <label className='form-label pb-1'>Message</label>
+                <div className='form-input d-flex align-tems-center p-3'>
+                    <div className='w-100'>
+                        <textarea {...register('message')} className='w-100' cols={30} rows={5} placeholder='Type your message here...'></textarea>
+                    </div>
+                </div>
+                <p className='text-danger'>{ errors.message?.message }</p>
+            </div>
+            <button className='main-button-style w-100 py-3 mt-2'>Submit</button>
+        </form>
+    )
+}

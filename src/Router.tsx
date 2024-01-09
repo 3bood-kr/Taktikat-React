@@ -5,6 +5,7 @@ import NewsPage from "./pages/NewsPage";
 import AnalysisPage from "./pages/AnalysisPage";
 import CarutiresPage from "./pages/CarutiresPage";
 import NewsShowPage from "./pages/NewsShowPage";
+import ContactPage from "./pages/ContactPage";
 
 const router= createBrowserRouter(
     [
@@ -32,6 +33,10 @@ const router= createBrowserRouter(
                 {
                     path: '/carutires',
                     element: <CarutiresPage />
+                },
+                {
+                    path: '/contact',
+                    element: <ContactPage />
                 },
             ]
         }

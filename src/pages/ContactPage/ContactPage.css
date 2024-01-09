@@ -1,0 +1,10 @@
+.contact-card-heading{
+    font-size: 25px;
+    font-weight: 700;
+    color: #515151;
+}
+
+.contact-image{
+    border-radius: 12px;
+    overflow: hidden;
+}

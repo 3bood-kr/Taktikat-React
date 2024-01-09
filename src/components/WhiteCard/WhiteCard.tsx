@@ -6,7 +6,7 @@ import { createContext } from 'react'
 import Toggle from '../Toggle'
 
 interface Props {
-    heading: string
+    heading?: string
     link?: string
     showToggle?: boolean
     filter?: false,

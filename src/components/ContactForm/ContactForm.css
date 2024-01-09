@@ -1,0 +1,19 @@
+.form-input{
+    border: 1px solid #EAEAEA;
+    border-radius: 6px;
+}
+
+.form-input::placeholder {
+    font-size: 14px;
+    font-weight: 400;
+    color: #686868;
+  }
+
+
+.form-label{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #5E2085;
+    
+}
