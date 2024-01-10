@@ -1,5 +1,5 @@
 import axios from "axios"
-export const fetchAnalysis = async (type: 'video' | 'text', limit: number) => {
+export const fetchAnalysis = async (type: 'video' | 'text' | 'caricature', limit: number) => {
     console.log('Fetching Main Analyisis')
     const params = {
         content_type: type,

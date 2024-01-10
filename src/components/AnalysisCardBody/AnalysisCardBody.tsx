@@ -1,6 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { toggleContext } from '../WhiteCard/WhiteCard';
 import SecondMainCard from '../SecondMainCard/SecondMainCard';
+import { useQueries } from '@tanstack/react-query';
+import { fetchMainNews } from '../../fetchers/News';
+import { fetchAnalysis } from '../../fetchers/Analysis';
+import Loader from '../Loader';
 
 interface Props{
     videos: Analysis[],
@@ -21,17 +25,42 @@ export interface Analysis {
 }
 
 
-export default function AnalysisCardBody({ videos, articles }: Props) {
+export default function AnalysisCardBody() {
     const isToggled = useContext(toggleContext);
-    const [items, setItems] = useState<Analysis[]>(videos);
-
+    const [items, setItems] = useState<Analysis[]>([]);
+    const [
+        mainArtcileAnalysis,
+        mainVideoAnalysis
+    ] = useQueries(
+        {
+            queries: [
+                {
+                    queryKey: ['main_article_analysis'],
+                    queryFn: () => fetchAnalysis('text', 2),
+                },
+                {
+                    queryKey: ['main_video_analysis'],
+                    queryFn: () => fetchAnalysis('video', 2),
+                  },
+                ]
+            }
+            );
+            
     useEffect(() => {
         if (!isToggled) {
-            setItems(videos);
+            setItems(mainVideoAnalysis.data || []);
         } else {
-            setItems(articles);
+            setItems(mainArtcileAnalysis.data || []);
         }
     }, [isToggled, items]);
+            
+            
+    if(mainArtcileAnalysis.isLoading || mainVideoAnalysis.isLoading){
+        return <Loader size={20}/>
+    }
+    if(mainArtcileAnalysis.isError || mainVideoAnalysis.isError || !mainArtcileAnalysis.data || !mainVideoAnalysis.data){
+        return 'Error';
+    }
 
     return (
         <>

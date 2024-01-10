@@ -14,34 +14,9 @@ import { BarLoader, BounceLoader, CircleLoader, ClimbingBoxLoader } from 'react-
 import Loader from '../../components/Loader'
 import { fetchAnalysis } from '../../fetchers/Analysis'
 import AnalysisCardBody from '../../components/AnalysisCardBody'
+import CaricaturesCardBody from '../../components/CaricaturesCardBody'
 
 export default function HomePage() {
-
-  const [
-    mainNewsQuery,
-    mainVideoAnalysisQuery,
-    mainArticleAnalysisQuery,
-  ] = useQueries({
-    queries: [
-      {
-        queryKey: ['main_news'],
-        queryFn: fetchMainNews,
-      },
-      {
-        queryKey: ['main_video_analysis'],
-        queryFn: () => fetchAnalysis('video', 2),
-      },
-      {
-        queryKey: ['main_article_analysis'],
-        queryFn: () => fetchAnalysis('text', 2),
-      },
-    ]
-  });
-
-  if(mainNewsQuery.isLoading || mainVideoAnalysisQuery.isLoading || mainArticleAnalysisQuery.isLoading){
-    return <Loader />
-  }
-  
 
 
   return (
@@ -52,16 +27,11 @@ export default function HomePage() {
           <AboutCard />
 
           <WhiteCard link='/caricatures' heading='Caricature Videos'>
-            <MainCard col={3}></MainCard>
-            <MainCard col={3}></MainCard>
-            <MainCard col={3}></MainCard>
-            <MainCard col={3}></MainCard>
+            <CaricaturesCardBody></CaricaturesCardBody>
           </WhiteCard>
 
           <WhiteCard link='/analysis' heading='Analysis' showToggle={true}>
-            <AnalysisCardBody videos={mainVideoAnalysisQuery.data} articles={mainArticleAnalysisQuery.data}>
-              
-            </AnalysisCardBody>
+            <AnalysisCardBody/>
           </WhiteCard>
 
         </SectionLayout>
@@ -69,7 +39,7 @@ export default function HomePage() {
         <AsideLayout>
 
           <WhiteCard link='/news' heading='News'>
-            <NewsCardBody news={mainNewsQuery.data}/>
+            <NewsCardBody/>
           </WhiteCard>
 
           <WhiteCard heading='Matches'>

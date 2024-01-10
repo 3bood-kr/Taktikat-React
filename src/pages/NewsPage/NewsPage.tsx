@@ -37,7 +37,7 @@ export default function NewsPage() {
                 </SectionLayout>
                 <AsideLayout>
                     <WhiteCard heading='Top Leauges'>
-                        <TopLeaugesCardBody countries={topLeauges.data}></TopLeaugesCardBody>
+                        <TopLeaugesCardBody></TopLeaugesCardBody>
                     </WhiteCard>
                 </AsideLayout>
             </MainLayout>

@@ -26,3 +26,7 @@ span.circle-logo{
     object-fit: cover;
 }
 
+.accordion-button{
+    padding: 5px !important;
+}
+

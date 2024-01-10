@@ -1,12 +1,28 @@
 import React from 'react'
 import './ShowNewsPageCard.css'
 import { newItem } from '../NewsCardBody/NewsCardBody'
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { fetchNewsBySlug } from '../../fetchers/News';
+import Loader from '../Loader';
 
-interface Props{
-    data: newItem
-}
+export default function ShowNewsPageCard() {
+    const params = useParams();
+    const {data, isError, isLoading, isSuccess} = useQuery({
+        queryKey: ['show_news', params],
+        queryFn: () => fetchNewsBySlug(params.slug),
+    });
 
-export default function ShowNewsPageCard({data}: Props) {
+    // if (topLeauges.isLoading || showNews.isLoading) {
+    //     return <Loader />
+    // }
+    if(isLoading){
+        return <Loader size={20}/>
+    }
+
+    if(isError){
+        return <h1>error</h1>
+    }
     return (
         <>
             <article className='show-news-page-card mb-3'>

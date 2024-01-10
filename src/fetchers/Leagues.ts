@@ -1,10 +1,7 @@
 import axios from "axios"
-export const fetchLeaguesByCountry = async () => {
+import { Countries } from "../components/TopLeaugesCardBody/TopLeaugesCardBody";
+export const fetchLeaguesByCountry = async () : Promise<Countries> => {
     console.log('Fetching Leauges By Country')
-    const { data } = await axios.get('https://api.taktikat.app/api/web/v2/leagues/countries', {
-        params: {
-            _limit: 5
-           }
-    });
+    const { data } = await axios.get('https://api.taktikat.app/api/web/v2/leagues/countries');
     return data.data; 
 }
