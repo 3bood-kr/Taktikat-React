@@ -1,0 +1,36 @@
+.purple_card{
+    border-radius: 12px;
+    position: relative;
+    background-color: rgb(80, 36, 100);
+    overflow: hidden;
+    height: 247px;
+    color: #fff;
+}
+
+.download_img{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 70%;
+}
+
+.download_img img{
+    width: 100%;
+    height: 100%;
+}
+
+.ad_title{
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+.download_now{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.stores_container{
+    z-index: 2;
+}

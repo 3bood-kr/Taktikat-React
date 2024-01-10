@@ -15,6 +15,8 @@ import Loader from '../../components/Loader'
 import { fetchAnalysis } from '../../fetchers/Analysis'
 import AnalysisCardBody from '../../components/AnalysisCardBody'
 import CaricaturesCardBody from '../../components/CaricaturesCardBody'
+import AdCard from '../../components/AdCard'
+import DownloadAppCard from '../../components/DownloadAppCard/DownloadAppCard'
 
 export default function HomePage() {
 
@@ -34,6 +36,7 @@ export default function HomePage() {
             <AnalysisCardBody/>
           </WhiteCard>
 
+          <DownloadAppCard></DownloadAppCard>
         </SectionLayout>
 
         <AsideLayout>
@@ -46,6 +49,7 @@ export default function HomePage() {
             <MatchesCardBody/>
           </WhiteCard>
 
+          <AdCard />
         </AsideLayout>
 
       </MainLayout>

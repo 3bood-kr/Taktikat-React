@@ -36,9 +36,9 @@ export default function NewsCardBody() {
                     (item, index) => (
                         <li key={item.id} className='news-card-item mb-2 py-2'>
                             <div className='row g-2'>
-                                <div className="news-item-image col-3 p-0">
+                                <Link to={`/news/${item.slug}`} className="news-item-image col-3 p-0">
                                     <img src={item.image} alt="" />
-                                </div>
+                                </Link>
                                 <div className="news-item-content col-9 p-2">
                                     <Link to={`/news/${item.slug}`}>
                                         <p>
