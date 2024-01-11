@@ -7,6 +7,7 @@ import MainCard from '../MainCard';
 
 interface Props{
     limit?: number ,
+    per_page?: number
 }
 
 export default function CaricaturesCardBody({ limit = 4 }: Props) {

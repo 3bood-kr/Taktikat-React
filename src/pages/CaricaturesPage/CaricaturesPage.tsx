@@ -49,20 +49,8 @@ export interface AnalysisResponse {
 }
 
 export default function CaricaturesPage() {
-    const [page, setPage] = useState(1)
-    const { data, isLoading, isError, isSuccess } = useQuery<AnalysisResponse>({
-        queryKey: ['caricatures', page],
-        queryFn: () => fetchPaginatedAnalysis('caricature', page)
-    })
-
-    if (isLoading) {
-        return <Loader size={20} />
-    }
-
-    if(isError || !data?.data){
-        return 'Error Fetching Carictures'
-    }
-
+    const [page, setPage] = useState(1);
+    const [paginationData, setPaginationData] = useState<{meta: Meta, links: Links}>()
 
     return (
         <>
@@ -70,14 +58,14 @@ export default function CaricaturesPage() {
                 <SectionLayout>
 
                     <WhiteCard heading='Caricature Videos'>
-                        <CaricaturesPaginatedCardBody items={data.data} />
+                        <CaricaturesPaginatedCardBody page={page} setPaginationData={setPaginationData}/>
                     </WhiteCard>
 
                     <WhiteCard heading='Latest News' link='/news'>
                         <LatestNewsCardBody />
                     </WhiteCard>
 
-                    <Pagination links={data.links} meta={data.meta} setPage={setPage}/>
+                    { paginationData && <Pagination links={paginationData.links} meta={paginationData.meta} setPage={setPage}/>}
                 </SectionLayout>
 
                 <AsideLayout>
