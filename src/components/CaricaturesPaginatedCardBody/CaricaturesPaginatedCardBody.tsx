@@ -1,10 +1,20 @@
 import React, { useEffect } from 'react'
 import MainCard from '../MainCard'
 import { Analysis } from '../AnalysisCardBody/AnalysisCardBody'
-import { AnalysisResponse, Links, Meta } from '../../pages/CaricaturesPage/CaricaturesPage'
+import { Links, Meta } from '../../pages/CaricaturesPage/CaricaturesPage'
 import { useQuery } from '@tanstack/react-query'
 import { fetchPaginatedAnalysis } from '../../fetchers/Analysis'
 import Loader from '../Loader'
+
+export interface AnalysisResponse {
+    status: number;
+    code: number;
+    locale: string;
+    message: string;
+    data: Analysis[];
+    links: Links;
+    meta: Meta;
+}
 
 interface Props{
     page: number

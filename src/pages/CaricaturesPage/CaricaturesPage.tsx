@@ -25,7 +25,7 @@ export interface Meta {
     total: number;
 }
 
-interface Link {
+export interface Link {
     url: string | null;
     label: string;
     active: boolean;
@@ -38,15 +38,6 @@ export interface Links {
     next: string;
 }
 
-export interface AnalysisResponse {
-    status: number;
-    code: number;
-    locale: string;
-    message: string;
-    data: Analysis[];
-    links: Links;
-    meta: Meta;
-}
 
 export default function CaricaturesPage() {
     const [page, setPage] = useState(1);
@@ -72,8 +63,8 @@ export default function CaricaturesPage() {
                 
                     <WhiteCard heading='Top Leagues'>
                         <TopLeaugesCardBody />
-                        <AdCard />
                     </WhiteCard>
+                    <AdCard />
                 </AsideLayout>
             </MainLayout>
         </>

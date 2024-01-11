@@ -1,5 +1,5 @@
 import axios from "axios"
-import { AnalysisResponse } from "../pages/CaricaturesPage/CaricaturesPage";
+import { AnalysisResponse } from "../components/CaricaturesPaginatedCardBody/CaricaturesPaginatedCardBody";
 export const fetchAnalysis = async (type: 'video' | 'text' | 'caricature', limit: number) => {
     console.log('Fetching Main Analyisis')
     const params = {
