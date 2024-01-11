@@ -3,7 +3,7 @@ import RootLayout from "./layouts/RootLayout";
 import HomePage from "./pages/HomePage";
 import NewsPage from "./pages/NewsPage";
 import AnalysisPage from "./pages/AnalysisPage";
-import CarutiresPage from "./pages/CarutiresPage";
+import CaricaturesPage from "./pages/CaricaturesPage";
 import NewsShowPage from "./pages/NewsShowPage";
 import ContactPage from "./pages/ContactPage";
 
@@ -31,8 +31,8 @@ const router= createBrowserRouter(
                     element: <AnalysisPage />
                 },
                 {
-                    path: '/carutires',
-                    element: <CarutiresPage />
+                    path: '/Caricatures',
+                    element: <CaricaturesPage />
                 },
                 {
                     path: '/contact',

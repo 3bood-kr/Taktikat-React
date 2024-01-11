@@ -3,25 +3,25 @@ import MainCard from '../MainCard';
 import { useQueries, useQuery } from '@tanstack/react-query';
 import { fetchMainNews } from '../../fetchers/News';
 import { newItem } from '../NewsCardBody/NewsCardBody';
+import Loader from '../Loader';
 
 export default function LatestNewsCardBody() {
-    const { data, isLoading, isSuccess, isError } = useQuery({
+    const { data, isLoading, isSuccess, isError } = useQuery<newItem[]>({
         queryKey: ['main_news'],
         queryFn: fetchMainNews,
-    })
+    })    
+    if(isLoading){
+        return <Loader size={20}/>
+    }
 
-    const [items, setItems] = useState<newItem[]>([]);
-
-    useEffect(() => {
-        if (isSuccess) {
-            setItems(data);
-        }
-    }, [data]);
+    if(isError || !data){
+        return 'Error Fetching News';
+    }
 
     return (
         <>
             {
-                items.map((item, index) => (
+                data.map((item, index) => (
                     <MainCard
                         key={index}
                         col={3}

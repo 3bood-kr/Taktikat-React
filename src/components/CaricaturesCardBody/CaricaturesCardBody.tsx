@@ -1,15 +1,18 @@
 import { useQuery } from '@tanstack/react-query'
-import React from 'react'
+import React, { useState } from 'react'
 import { fetchAnalysis } from '../../fetchers/Analysis';
 import { Analysis } from '../AnalysisCardBody/AnalysisCardBody';
 import Loader from '../Loader';
 import MainCard from '../MainCard';
 
-export default function CaricaturesCardBody() {
+interface Props{
+    limit?: number ,
+}
 
+export default function CaricaturesCardBody({ limit = 4 }: Props) {
     const { data, isLoading, isError, isSuccess } = useQuery<Analysis[]>({
         queryKey: ['main_caricatures'],
-        queryFn: () => fetchAnalysis('caricature', 4),
+        queryFn: () => fetchAnalysis('caricature', limit),
     });
 
     if (isLoading) {

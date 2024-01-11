@@ -25,7 +25,7 @@ export default function MainCard({link, title, image, date, col }: Props) {
                 </div>
                 <div className="main-card-body p-2">
                     <span className='date-text mb-3'>{ date }</span>
-                    <p>{ title?.substring(0, 40) }...</p>
+                    <p>{ title?.substring(0, 15) }...</p>
                 </div>
             </Link>
         </div>

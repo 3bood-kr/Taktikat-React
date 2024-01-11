@@ -44,7 +44,7 @@ export default function WhiteCard({ heading, link, showToggle = false, children,
                     </div>
                 </div>
                 <div className='white-card-body p-1'>
-                    <div className="row">
+                    <div className="row g-3">
                         <toggleContext.Provider value={isToggled}>
                             {children}
                         </toggleContext.Provider>

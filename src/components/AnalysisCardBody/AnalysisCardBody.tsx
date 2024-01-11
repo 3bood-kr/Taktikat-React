@@ -48,11 +48,12 @@ export default function AnalysisCardBody() {
             
     useEffect(() => {
         if (!isToggled) {
-            setItems(mainVideoAnalysis.data || []);
+            setItems(prevItems => mainVideoAnalysis.data || []);
         } else {
-            setItems(mainArtcileAnalysis.data || []);
+            setItems(prevItems => mainArtcileAnalysis.data || []);
         }
-    }, [isToggled, items]);
+    }, [isToggled, mainVideoAnalysis.data, mainArtcileAnalysis.data]);
+            
             
             
     if(mainArtcileAnalysis.isLoading || mainVideoAnalysis.isLoading){
