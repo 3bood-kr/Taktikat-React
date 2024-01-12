@@ -1,6 +1,6 @@
 import React from 'react'
 import { Swiper as SwiperJS, SwiperSlide, useSwiper } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import image from '../../assets/images/about-card.png'
 import './Swiper.css'
@@ -25,13 +25,22 @@ export default function Swiper({ slides }: Props) {
                     <IoIosArrowForward color='white' size={20} />
                 </button>
                 <SwiperJS loop={true} style={{width: '100%'}}
-                    modules={[Navigation, Pagination, Scrollbar, A11y]}
+                    modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+                    autoplay={{
+                        delay: 4500,
+                        disableOnInteraction: false,
+                      }}
                     slidesPerView={1}
                     navigation={{
                         nextEl: '.slider-btn-next',
                         prevEl: '.slider-btn-prev',
                     }}
-                    pagination={{ clickable: true }}
+                    pagination={{
+                        el: '.swiper-custom-pagination',
+                        renderBullet: function (index, className) {
+                        return '<span class="' + className + '"></span>';
+                      },
+                       clickable: true }}
                     scrollbar={{ draggable: true }}
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
@@ -41,7 +50,7 @@ export default function Swiper({ slides }: Props) {
                             <SwiperSlide>
                                 <div className='swiper-image-box positon-relative'>
                                     <img src={image} alt="" style={{ width: '100%', height: 370, objectFit: 'cover' }} />
-                                    <div className='swiper-slide-overlay d-flex align-items-end p-4 pb-5'>
+                                    <div className='swiper-slide-overlay d-flex align-items-end p-4'>
                                         <Link to={`/news/${slug}`} className='slide-link'>
                                             {title}
                                         </Link>
@@ -51,6 +60,7 @@ export default function Swiper({ slides }: Props) {
                         ))
                     }
                 </SwiperJS>
+                <div className="swiper-custom-pagination pt-3"></div>
             </div>
         </>
     )

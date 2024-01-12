@@ -15,7 +15,15 @@
     text-align: center;
 }
 
+.custom_bullet{
+    width: 7.5px;
+    height: 7.5px;
+    border-radius: 50%;
+    background-color: #B8B8B8;
+}
+
 .active {
     color: #5E2085;
     font-weight: 700;
 }
+
