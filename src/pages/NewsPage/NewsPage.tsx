@@ -15,10 +15,6 @@ import { fetchMainNews } from '../../fetchers/News'
 import { newItem } from '../../components/NewsCardBody/NewsCardBody'
 import Loader from '../../components/Loader'
 
-interface Props {
-    page: number
-    setPaginationData: (data: { meta: Meta, links: Links }) => void
-}
 
 export default function NewsPage() {
     const [page, setPage] = useState(1);

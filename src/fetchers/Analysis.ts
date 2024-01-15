@@ -11,11 +11,11 @@ export const fetchAnalysis = async (type: 'video' | 'text' | 'caricature', limit
 }
 
 
-export const fetchPaginatedAnalysis =  async (type: 'video' | 'text' | 'caricature', page: number) : Promise<AnalysisResponse> => {
+export const fetchPaginatedAnalysis =  async (type: 'video' | 'text' | 'caricature', page: number, per_page = 12) : Promise<AnalysisResponse> => {
     console.log('Fetching Paginated Analyisis')
     const params = {
         content_type: type,
-        per_page: 12,
+        per_page: per_page,
         page: page
     }
     const { data } = await axios.get('https://api.taktikat.app/api/web/v2/analytics', {params});

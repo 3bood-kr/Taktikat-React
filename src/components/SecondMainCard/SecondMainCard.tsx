@@ -30,7 +30,7 @@ export default function SecondMainCard({ col, data }: Props) {
                 <a href={data.video_url} target='_blank' className="second-main-card-image">
                     <img src={data.image} alt="" />
                     <div className='second-main-card-overlay p-3'>
-                        <p>{data.title}</p>
+                        <p>{data.title?.substring(0,50)}...</p>
                     </div>
                 </a>
             </div>

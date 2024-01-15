@@ -35,7 +35,7 @@ const options = getCountries().map((item) => (
 
 export default function ContactForm() {
     const [swalProps, setSwalProps] = useState({});
-    const { register, control, getValues, handleSubmit, formState: {errors} } = useForm<FormData>({ resolver: zodResolver(schema) });
+    const { register, control, getValues, handleSubmit, formState: {errors}, reset } = useForm<FormData>({ resolver: zodResolver(schema) });
     const { field } = useController({ name: 'phone', control })
 
     const mutation = useMutation({
@@ -50,6 +50,7 @@ export default function ContactForm() {
                 text: 'Your message has been sent successfully!',
                 icon: 'success',
             });
+            reset()
         },
         onError: (err) => {
             setSwalProps({
