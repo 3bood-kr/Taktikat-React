@@ -13,6 +13,7 @@ import LatestNewsCardBody from '../../components/LatestNewsCardBody/LatestNewsCa
 import Pagination from '../../components/Pagination'
 import AnlysisPaginatedCardBody from '../../components/AnlysisPaginatedCardBody'
 import { Links, Meta } from '../CaricaturesPage/CaricaturesPage'
+import AdCard from '../../components/AdCard'
 
 export default function AnalysisPage() {
     const [page, setPage] = useState(1);
@@ -40,7 +41,7 @@ export default function AnalysisPage() {
                 <WhiteCard heading='Analysis' showToggle>
                     <AnlysisPaginatedCardBody page={page} setPaginationData={setPaginationData}/>
                 </WhiteCard>
-                <WhiteCard>
+                <WhiteCard heading='Latest News' link='/news'>
                     <LatestNewsCardBody></LatestNewsCardBody>
                 </WhiteCard>
                 { paginationData && <Pagination links={paginationData.links} meta={paginationData.meta} setPage={setPage}/>}
@@ -52,6 +53,7 @@ export default function AnalysisPage() {
                 <WhiteCard heading='Top Leagues'>
                     <TopLeaugesCardBody></TopLeaugesCardBody>
                 </WhiteCard>
+                <AdCard />
             </AsideLayout>
 
         </MainLayout>

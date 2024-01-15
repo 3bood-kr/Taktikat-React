@@ -28,7 +28,7 @@ export default function WhiteCard({ heading, link, showToggle = false, children,
                     <h2 className='white-card-title'>{heading}</h2>
                     <div className='d-flex align-items-center justify-content-between gap-3'>
                         {showToggle && <Toggle onClick={() => (setToggled(!isToggled))}/>}
-                        {link && <NavLink to={link}>See All</NavLink>}
+                        {link && <NavLink to={link} className='nav_link'>See All</NavLink>}
                         {filter &&
                             <div className='d-flex gap-2'>
                                 <div><LiveTvIcon /></div>

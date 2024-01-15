@@ -20,7 +20,7 @@ export default function SecondMainCard({ col, data }: Props) {
                             <img src={data.analyst.image} alt="" />
                         </div>
                         <p className='author-name p-0 px-2'>
-                            {data.analyst.name}
+                            {data.analyst.name.length > 12 ? data.analyst.name.substring(0,12)+'...' : data.analyst.name }
                         </p>
                     </div>
                     <span className='date m-0'>
