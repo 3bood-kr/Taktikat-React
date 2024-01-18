@@ -50,20 +50,32 @@ export default function Footer() {
                         <div className="d-flex flex-column mb-3">
                             <p className='social-text mb-3'>Follow Us</p>
                             <div className="d-flex justify-content-between gap-4">
-                                <a href='/'>
+                                <a href='https://www.facebook.com/profile.php?id=100088146365883' target='_blank'>
                                     <FaFacebook size={30} color='white' />
                                 </a>
-                                <FaTwitter size={30} color='white' />
-                                <FaInstagram size={30} color='white' />
-                                <FaTiktok size={30} color='white' />
+                                <a href='https://twitter.com/TaktikatS13084'>
+                                    <FaTwitter size={30} color='white' />
+                                </a>
+                                <a href='https://www.instagram.com/taktikat.app/'>
+                                    <FaInstagram size={30} color='white' />
+                                </a>
+                                <a href='/'>
+                                    <FaTiktok size={30} color='white' />
+                                </a>
                             </div>
                         </div>
                         <div className="d-flex flex-column mb-3">
                             <p className='social-text mb-3'>Download The App</p>
                             <div className="d-flex justify-content-between gap-4">
-                                <FaApple size={30} color='white' />
-                                <FaGooglePlay size={30} color='white' />
-                                <SiHuawei size={30} color='white' />
+                                <a href='/'>
+                                    <FaApple size={30} color='white' />
+                                </a>
+                                <a href='/'>
+                                    <FaGooglePlay size={30} color='white' />
+                                </a>
+                                <a href='/'>
+                                    <SiHuawei size={30} color='white' />
+                                </a>
                             </div>
                         </div>
                     </div>

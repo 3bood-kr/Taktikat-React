@@ -27,7 +27,7 @@ export const fetchNewsBySearch = async (searchValue: string) => {
     console.log('Searching News')
     const params = {
         q: searchValue,
-        limit: 3
+        limit: 4
     }
     const { data } = await axios.get(`https://api.taktikat.app/api/web/v2/search`, {params});
     return data.data; 

@@ -15,10 +15,10 @@ export default function DownloadAppCard() {
                 <h2 className={`${styles.ad_title}`}>Try New <br/> Experience </h2>
                 <div>
                     <p className={`${styles.download_now} pb-3`}>Download The App Now</p>
-                    <div className={` ${styles.stores_container} d-flex justify-content-center gap-3`}>
-                        <img src={appstore_img} alt="" />
-                        <img src={play_img} alt="" />
-                        <img src={appgallery_img} alt="" />
+                    <div className={` ${styles.stores_container} d-flex justify-content-center gap-3 z-3`}>
+                        <img src={appstore_img} />
+                        <img src={play_img} />
+                        <img src={appgallery_img} />
                     </div>
                 </div>
             </div>
