@@ -12,12 +12,12 @@ aside .accordion-list li:not(:last-of-type){
     border-bottom: 1px solid rgba(67, 67, 67, 0.11);
 }
 
-span.circle-logo{
+.circle-logo{
     display: inline-block;
-    width: 27px;
-    height: 27px;
-    min-width: 27px;
-    min-height: 27px;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
     border-radius: 50%;
     overflow: hidden;
 }

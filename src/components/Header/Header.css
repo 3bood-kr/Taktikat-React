@@ -1,24 +1,24 @@
-.header{
+.header {
     height: 101px;
     background-color: #502464;
     color: white;
 }
 
-.nav-wrapper{
+.nav-wrapper {
     height: 100%;
 }
 
-a.nav-link{
-    border-bottom:  3px solid transparent;
+a.nav-link {
+    border-bottom: 3px solid transparent;
     color: white !important;
 }
 
-a.nav-link.active{
-    border-bottom-color:#C90F8D;
+header a.nav-link.active {
+    border-bottom-color: #C90F8D;
     font-size: 16px;
 }
 
-.nav-icon{
+.nav-icon {
     display: flex;
     align-items: center;
     justify-content: center;
