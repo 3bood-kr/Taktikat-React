@@ -9,11 +9,12 @@ import SecondMainCard from '../SecondMainCard/SecondMainCard';
 import { Links, Meta } from '../../pages/CaricaturesPage/CaricaturesPage';
 import Loader from '../Loader';
 
-interface Props{
-    page: number
-    setPaginationData: (data: {meta: Meta, links: Links}) => void
+interface Props {
+    articlesPage: number
+    videosPage: number
+    setPaginationData: (data: { meta: Meta, links: Links }) => void
 }
-export default function AnlysisPaginatedCardBody({page, setPaginationData}: Props) {
+export default function AnlysisPaginatedCardBody({ articlesPage, videosPage, setPaginationData }: Props) {
     const isToggled = useContext(toggleContext);
     const [items, setItems] = useState<Analysis[]>([]);
     const [
@@ -23,44 +24,37 @@ export default function AnlysisPaginatedCardBody({page, setPaginationData}: Prop
         {
             queries: [
                 {
-                    queryKey: ['article_analysis', page],
-                    queryFn: () => fetchPaginatedAnalysis('text', page, 6),
+                    queryKey: ['article_analysis', articlesPage],
+                    queryFn: () => fetchPaginatedAnalysis('text', articlesPage, 6),
                 },
                 {
-                    queryKey: ['video_analysis', page],
-                    queryFn: () => fetchPaginatedAnalysis('video', page, 6),
-                  },
-                ]
-            }
-            );
+                    queryKey: ['video_analysis', videosPage],
+                    queryFn: () => fetchPaginatedAnalysis('video', videosPage, 6),
+                },
+            ]
+        }
+    );
 
     useEffect(() => {
         if (videoAnalysis.isSuccess && !isToggled) {
+            setItems((prevItems) => videoAnalysis.data?.data || []);
             setPaginationData({ meta: videoAnalysis.data.meta, links: videoAnalysis.data.links });
-        }
-        else if(artcileAnalysis.isSuccess){
+        } 
+        if (artcileAnalysis.isSuccess && isToggled) {
+            setItems((prevItems) => artcileAnalysis.data?.data || []);
             setPaginationData({ meta: artcileAnalysis.data.meta, links: artcileAnalysis.data.links });
         }
-    }, [videoAnalysis.isSuccess, videoAnalysis.data, artcileAnalysis.isSuccess, artcileAnalysis.data, isToggled]);
+    }, [videoAnalysis.data, artcileAnalysis.data, isToggled, articlesPage, videosPage, artcileAnalysis.isSuccess, videoAnalysis.isSuccess]);
 
-
-    useEffect(() => {
-        if (!isToggled) {
-            setItems(prevItems => videoAnalysis.data?.data || []);
-        } else {
-            setItems(prevItems => artcileAnalysis.data?.data || []);
-        }
-    }, [isToggled, videoAnalysis.data, videoAnalysis.data]);
-
-    if(videoAnalysis.isLoading || artcileAnalysis.isLoading){
+    if (videoAnalysis.isLoading || artcileAnalysis.isLoading) {
         return <Loader size={20} />
     }
 
-    if(videoAnalysis.isError || artcileAnalysis.isError){
+    if (videoAnalysis.isError || artcileAnalysis.isError) {
         return 'Error Fetching Analysis';
     }
 
-    
+
     return (
         <>
             {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import MainLayout from '../../layouts/MainLayout'
 import SectionLayout from '../../layouts/SectionLayout'
 import AsideLayout from '../../layouts/AsideLayout'
@@ -14,10 +14,16 @@ import Pagination from '../../components/Pagination'
 import AnlysisPaginatedCardBody from '../../components/AnlysisPaginatedCardBody'
 import { Links, Meta } from '../CaricaturesPage/CaricaturesPage'
 import AdCard from '../../components/AdCard'
+import { toggleContext } from '../../components/WhiteCard/WhiteCard'
 
 export default function AnalysisPage() {
-    const [page, setPage] = useState(1);
+    const [videosPage, setVideosPage] = useState(1);
+    const [articlesPage, setArticlesPage] = useState(1);
+    
     const [paginationData, setPaginationData] = useState<{ meta: Meta, links: Links }>()
+
+    const [toggled, setToggled] = useState(false);
+    
 
 
 
@@ -38,13 +44,13 @@ export default function AnalysisPage() {
 
             <SectionLayout>
                 <Swiper slides={data} />
-                <WhiteCard heading='Analysis' showToggle>
-                    <AnlysisPaginatedCardBody page={page} setPaginationData={setPaginationData}/>
+                <WhiteCard heading='Analysis' showToggle onToggle={(isToggled) => setToggled(isToggled)}>
+                    <AnlysisPaginatedCardBody articlesPage={articlesPage} videosPage={videosPage} setPaginationData={setPaginationData}/>
                 </WhiteCard>
                 <WhiteCard heading='Latest News' link='/news'>
                     <LatestNewsCardBody></LatestNewsCardBody>
                 </WhiteCard>
-                { paginationData && <Pagination links={paginationData.links} meta={paginationData.meta} setPage={setPage}/>}
+                { paginationData && <Pagination links={paginationData.links} meta={paginationData.meta} setPage={ toggled ? setArticlesPage : setVideosPage}/>}
 
                 
             </SectionLayout>

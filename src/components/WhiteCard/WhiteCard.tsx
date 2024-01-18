@@ -11,14 +11,20 @@ interface Props {
     showToggle?: boolean
     filter?: false,
     children: ReactNode
-    className?: string
+    className?: string,
+    onToggle?: (isToggled: boolean) => void
 
 }
 
 export const toggleContext = createContext(false);
 
-export default function WhiteCard({ heading, link, showToggle = false, children, filter, className }: Props) {
+export default function WhiteCard({ heading, link, showToggle = false, children, filter, onToggle  }: Props) {
     const [isToggled, setToggled] = useState(false);
+
+    const handleToggle = () => {
+        setToggled(!isToggled)
+        onToggle && onToggle(!isToggled);
+    }
 
     return (
         <>
@@ -27,7 +33,7 @@ export default function WhiteCard({ heading, link, showToggle = false, children,
                 <div className='p-1 d-flex align-item-center justify-content-between'>
                     <h2 className='white-card-title'>{heading}</h2>
                     <div className='d-flex align-items-center justify-content-between gap-3'>
-                        {showToggle && <Toggle onClick={() => (setToggled(!isToggled))}/>}
+                        {showToggle && <Toggle onClick={handleToggle}/>}
                         {link && <NavLink to={link} className='nav_link'>See All</NavLink>}
                         {filter &&
                             <div className='d-flex gap-2'>
