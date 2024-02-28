@@ -63,7 +63,7 @@ export default function TopLeaugesCardBody() {
 
         <>
             <Accordion defaultActiveKey="0">
-                {Object.keys(data).map((countryKey) => {
+                {Object.keys(data).slice(0, 20).map((countryKey) => {
                     const country: Country = data[countryKey];
                     return (
                         <Accordion.Item className="mb-2" eventKey={country.id + ''} key={country.id}>
