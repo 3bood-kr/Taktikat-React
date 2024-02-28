@@ -1,5 +1,5 @@
 import React from 'react'
-import image from '../../assets/images/ads-img.png'
+import image from '../../assets/images/ad-img.jpg'
 
 export default function PurpleCard() {
     return (
